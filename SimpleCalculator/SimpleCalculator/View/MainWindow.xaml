@@ -1,0 +1,104 @@
+﻿<Window x:Class="SimpleCalculator.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleCalculator"
+        xmlns:VM="clr-namespace:SimpleCalculator.ViewModel"
+        mc:Ignorable="d"
+        Title="Calculator" Height="450" Width="300" Background="Black" 
+       >
+
+    <!--<Window.DataContext>
+        <VM:CalculatorViewModel/>
+    </Window.DataContext>-->
+    
+    <Window.Resources>
+        <!--<VM:CalculatorViewModel x:Key="CalViewModel"></VM:CalculatorViewModel>-->
+        <ControlTemplate x:Key="CircleButton" TargetType="Button">
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Setter Property="Button.Background" Value="LightSlateGray"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+
+            <Grid>
+                <Ellipse Fill="{TemplateBinding Background}" Height="58" Width="58"/>
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+
+        <Style x:Key="numericStyle" TargetType="Button">
+            <Setter Property="Background" Value="Red"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+        
+        <Style x:Key="operatorStyle" TargetType="Button" BasedOn="{StaticResource numericStyle}">
+            <Setter Property="Background" Value="Orange"></Setter>
+        </Style>
+
+        <Style x:Key="otherOperations" TargetType="Button" BasedOn="{StaticResource numericStyle}">
+            <Setter Property="Background" Value="DarkKhaki"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid ShowGridLines="False">  <!--datacontext-->
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Background="White" Foreground="Black"  FontSize="12" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="{Binding Path=DisplayCompleteEquation, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" x:Name="displayCompleteEquation"></TextBlock>
+        <TextBlock Background="White" Foreground="Black"  FontSize="32" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" TextAlignment ="Right" Text="{Binding Path=Display, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" x:Name="displayCurrentNumber"></TextBlock>
+        
+        <Button Grid.Row="2" Grid.Column="0" Content="C"   Template="{StaticResource CircleButton}" Style="{StaticResource otherOperations}" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="c"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Content="+/-" Template="{StaticResource CircleButton}" Style="{StaticResource otherOperations}" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="+/-"></Button>
+        <Button Grid.Row="2" Grid.Column="2" Content="%" Template="{StaticResource CircleButton}" Style="{StaticResource otherOperations}" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="%"></Button>
+
+        <Button Grid.Row="2" Grid.Column="3" Content="/" Template="{StaticResource CircleButton}" Style="{StaticResource operatorStyle}"  Command="{Binding BasicOperator}" CommandParameter="/"></Button>
+        <Button Grid.Row="3" Grid.Column="3" Content="*" Template="{StaticResource CircleButton}" Style="{StaticResource operatorStyle}"  Command="{Binding BasicOperator}" CommandParameter="*"></Button>
+        <Button Grid.Row="4" Grid.Column="3" Content="-" Template="{StaticResource CircleButton}" Style="{StaticResource operatorStyle}"  Command="{Binding BasicOperator}" CommandParameter="-"></Button>
+        <Button Grid.Row="5" Grid.Column="3" Content="+" Template="{StaticResource CircleButton}" Style="{StaticResource operatorStyle}"  Command="{Binding BasicOperator}" CommandParameter="+"></Button>
+
+        <Button Grid.Row="6" Grid.Column="1" Content="." Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}"  Command="{Binding OperatorAndRelatedFunction}" CommandParameter="."></Button>
+        <Button Grid.Row="3" Grid.Column="0" Content="1" Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="1"></Button>
+        <Button Grid.Row="3" Grid.Column="1" Content="2" Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}"  Command="{Binding OperatorAndRelatedFunction}" CommandParameter="2"></Button>
+        <Button Grid.Row="3" Grid.Column="2" Content="3" Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}"  Command="{Binding OperatorAndRelatedFunction}" CommandParameter="3"></Button>
+        <Button Grid.Row="4" Grid.Column="0" Content="4" Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}"  Command="{Binding OperatorAndRelatedFunction}" CommandParameter="4"></Button>
+        <Button Grid.Row="4" Grid.Column="1" Content="5" Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}"  Command="{Binding OperatorAndRelatedFunction}" CommandParameter="5"></Button>
+        <Button Grid.Row="4" Grid.Column="2" Content="6" Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}"  Command="{Binding OperatorAndRelatedFunction}" CommandParameter="6"></Button>
+        <Button Grid.Row="5" Grid.Column="0" Content="7" Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}"  Command="{Binding OperatorAndRelatedFunction}" CommandParameter="7"></Button>
+        <Button Grid.Row="5" Grid.Column="1" Content="8" Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}"  Command="{Binding OperatorAndRelatedFunction}" CommandParameter="8"></Button>
+        <Button Grid.Row="5" Grid.Column="2" Content="9" Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}"  Command="{Binding OperatorAndRelatedFunction}" CommandParameter="9"></Button>
+        <Button Grid.Row="6" Grid.Column="0" Content="0" Template="{StaticResource CircleButton}" Style="{StaticResource numericStyle}"  Command="{Binding OperatorAndRelatedFunction}" CommandParameter="0"></Button>
+        <Button Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding BasicOperator}" CommandParameter="=">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="30" Background="Orange" Height="50">
+                        <TextBlock Text="=" Foreground="White" 
+                                           HorizontalAlignment="Center"                                           
+                                           Margin="0,5,0,0"
+                                           Height="40"
+                                           FontWeight ="Bold"
+                                           FontSize ="16"/>
+                    </Border>
+                   
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+
+</Window>
