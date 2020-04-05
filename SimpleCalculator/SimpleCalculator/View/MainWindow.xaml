@@ -43,6 +43,33 @@
             <Setter Property="Background" Value="DarkKhaki"></Setter>
         </Style>
     </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="D0" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="0"></KeyBinding>
+        <KeyBinding Key="D1" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="1"></KeyBinding>
+        <KeyBinding Key="D2" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="2"></KeyBinding>
+        <KeyBinding Key="D3" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="3"></KeyBinding>
+        <KeyBinding Key="D4" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="4"></KeyBinding>
+        <KeyBinding Key="D5" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="5"></KeyBinding>
+        <KeyBinding Key="D6" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="6"></KeyBinding>
+        <KeyBinding Key="D7" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="7"></KeyBinding>
+        <KeyBinding Key="D8" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="8"></KeyBinding>
+        <KeyBinding Key="D9" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="9"></KeyBinding>
+        <KeyBinding Key="Decimal" Command="{Binding OperatorAndRelatedFunction}" CommandParameter="."></KeyBinding>
+
+
+        <KeyBinding Key="Divide" Command="{Binding BasicOperator}" CommandParameter="/"></KeyBinding>
+        <KeyBinding Key="Add" Command="{Binding BasicOperator}" CommandParameter="+"></KeyBinding>
+        <KeyBinding Key="Subtract" Command="{Binding BasicOperator}" CommandParameter="-"></KeyBinding>
+        <KeyBinding Key="Multiply" Command="{Binding BasicOperator}" CommandParameter="*"></KeyBinding>
+        <KeyBinding Key="Enter" Command="{Binding BasicOperator}" CommandParameter="="></KeyBinding>
+
+        <KeyBinding Key="C" Command="{Binding otherOperations}" CommandParameter="c"></KeyBinding>
+        <KeyBinding Key="D5" Modifiers="Ctrl" Command="{Binding otherOperations}" CommandParameter="%"></KeyBinding>
+
+
+
+    </Window.InputBindings>
+    
     <Grid ShowGridLines="False">  <!--datacontext-->
         <Grid.RowDefinitions>
             <RowDefinition ></RowDefinition>

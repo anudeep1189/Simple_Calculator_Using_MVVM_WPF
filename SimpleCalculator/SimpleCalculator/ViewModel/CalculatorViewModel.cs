@@ -54,6 +54,7 @@ namespace SimpleCalculator.ViewModel
         private string firstOperand; 
         private string secondOperand;
         private bool isNewOperand = false;
+        private bool isFirstOperator = false;
 
         StringBuilder buildDisplayInput = new StringBuilder();
         #endregion
@@ -102,7 +103,7 @@ namespace SimpleCalculator.ViewModel
                         DisplayCompleteEquation = "0";
                         break;
                     case "+/-":
-                        if (Display != string.Empty || Display != "0")
+                        if (Display != string.Empty && Display != "0" && Display != null)
                         {
                             if (!Display.Contains("-"))
                             {
@@ -115,9 +116,15 @@ namespace SimpleCalculator.ViewModel
                         }
                         break;
                     case "%":
-                        double percentageConverstion = double.Parse(Display) / 100;
-                        Display = percentageConverstion.ToString();
-                        break;
+                        if(Display == null)
+                        {
+                            Display = "0";
+                        }
+                        {
+                            double percentageConverstion = double.Parse(Display) / 100;
+                            Display = percentageConverstion.ToString();
+                        }
+                            break;
                     case ".":
                         Display = Display + ".";
                         break;
@@ -177,9 +184,11 @@ namespace SimpleCalculator.ViewModel
             try
             {
                 isNewOperand = true;
+                isFirstOperator = true;
                 if (parameter.ToString() != "=" && selectedOperator == string.Empty)
                 {
                     selectedOperator = parameter.ToString();
+                    //isFirstOperator = false;
                 }
 
                 if (firstOperand == null)
@@ -215,13 +224,16 @@ namespace SimpleCalculator.ViewModel
                 }
                 else
                 {
-                    CompleteEquation.Add(parameter.ToString());
-                    buildDisplayInput.Clear();
-                    foreach (string dis in CompleteEquation)
+                    if (firstOperand != null)
                     {
-                        buildDisplayInput.Append(dis);
+                        CompleteEquation.Add(parameter.ToString());
+                        buildDisplayInput.Clear();
+                        foreach (string dis in CompleteEquation)
+                        {
+                            buildDisplayInput.Append(dis);
+                        }
+                        DisplayCompleteEquation = buildDisplayInput.ToString();
                     }
-                    DisplayCompleteEquation = buildDisplayInput.ToString();
                 }
             }
             catch (Exception e)
