@@ -54,8 +54,7 @@ namespace SimpleCalculator.ViewModel
         private string firstOperand; 
         private string secondOperand;
         private bool isNewOperand = false;
-        private bool isFirstOperator = false;
-
+        
         StringBuilder buildDisplayInput = new StringBuilder();
         #endregion
 
@@ -184,7 +183,6 @@ namespace SimpleCalculator.ViewModel
             try
             {
                 isNewOperand = true;
-                isFirstOperator = true;
                 if (parameter.ToString() != "=" && selectedOperator == string.Empty)
                 {
                     selectedOperator = parameter.ToString();

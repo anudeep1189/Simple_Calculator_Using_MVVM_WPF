@@ -15,7 +15,6 @@ C:\Users\Anudeep\source\repos\anudeep1189\WPFPracticeApplications\SimpleCalculat
 C:\Users\Anudeep\Source\Repos\anudeep1189\Simple_Calculator_Using_MVVM_WPF\SimpleCalculator\SimpleCalculator\bin\Debug\SimpleCalculator.exe.config
 C:\Users\Anudeep\Source\Repos\anudeep1189\Simple_Calculator_Using_MVVM_WPF\SimpleCalculator\SimpleCalculator\bin\Debug\SimpleCalculator.exe
 C:\Users\Anudeep\Source\Repos\anudeep1189\Simple_Calculator_Using_MVVM_WPF\SimpleCalculator\SimpleCalculator\bin\Debug\SimpleCalculator.pdb
-C:\Users\Anudeep\Source\Repos\anudeep1189\Simple_Calculator_Using_MVVM_WPF\SimpleCalculator\SimpleCalculator\obj\Debug\SimpleCalculator.csprojAssemblyReference.cache
 C:\Users\Anudeep\Source\Repos\anudeep1189\Simple_Calculator_Using_MVVM_WPF\SimpleCalculator\SimpleCalculator\obj\Debug\View\MainWindow.g.cs
 C:\Users\Anudeep\Source\Repos\anudeep1189\Simple_Calculator_Using_MVVM_WPF\SimpleCalculator\SimpleCalculator\obj\Debug\App.g.cs
 C:\Users\Anudeep\Source\Repos\anudeep1189\Simple_Calculator_Using_MVVM_WPF\SimpleCalculator\SimpleCalculator\obj\Debug\SimpleCalculator_MarkupCompile.cache
